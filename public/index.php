@@ -1,7 +1,15 @@
 <?php
+
 require __DIR__ . '/../app/Controllers/UserController.php';
-use app\Controllers\UserController;
-$user = new UserController();
+use App\Controllers\AuthController;
+//use app\Controllers\UserController;
+//$user = new UserController();
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    require __DIR__ . '/../app/Controllers/AuthController.php';
+    $auth = new AuthController();
+    $auth->login();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,14 +19,14 @@ $user = new UserController();
     <title>Inicio</title>
 </head>
 <body>
-    <form action="login.php" method="post">
+    <form action="" method="POST">
         <label for="email">Email</label>
         <input type="email" name="email" id="email">
         <label for="password">Password</label>
         <input type="password" name="password" id="password">
         <button type="submit">Iniciar sesión</button>
     </form>
-    <a href="register.php">Registrarse</a>
+    <a href="../app/views/register.php">Registrarse</a>
     <br>
     <?=var_dump($user);?>
 </body>
