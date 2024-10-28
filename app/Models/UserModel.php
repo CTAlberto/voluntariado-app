@@ -3,7 +3,7 @@
 namespace App\Models;
 require __DIR__ . '/Model.php';
 use App\Models\Model;
-
+use PDO;
 class UserModel extends Model
 {
     protected $table = 'users';
@@ -77,6 +77,25 @@ class UserModel extends Model
         $this->updated_at = $updated_at;
     }
 
+    public function getUserByEmail($email){
+        $sql = "SELECT * FROM usuarios WHERE email = :email";
+        $query = $this->db->prepare($sql);
+        $query->bindParam(':email', $email, PDO::PARAM_STR);
+        $query->execute();
+        if($query->rowCount() > 0){
+            $user = new UserModel();
+            $reg = $query->fetch();
+            $user->setId($reg['idusuario']);
+            $user->setName($reg['usuario']);
+            $user->setEmail($reg['email']);
+            $user->setPassword($reg['clave']);
+            
+            return $user;
+        }else{
+            return false;
+        }
 
+
+    }
 
 }

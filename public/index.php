@@ -2,8 +2,6 @@
 
 require __DIR__ . '/../app/Controllers/UserController.php';
 use App\Controllers\AuthController;
-//use app\Controllers\UserController;
-//$user = new UserController();
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     require __DIR__ . '/../app/Controllers/AuthController.php';
@@ -28,6 +26,5 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     </form>
     <a href="../app/views/register.php">Registrarse</a>
     <br>
-    <?=var_dump($user);?>
 </body>
 </html>
