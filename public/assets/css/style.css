@@ -2,7 +2,6 @@
 body {
     margin: 0; /* Eliminar el margen por defecto */
     padding: 0; /* Eliminar el padding por defecto */
-
 }
 
 /* Estilos para el header */
@@ -24,6 +23,7 @@ body {
 /* Estilo del logo */
 .logo img {
     height: 50px; /* Altura del logo */
+    border-radius: 50%; /* Forma redondeada */  
 }
 .navbar{
     flex: 1;               /* El menú ocupa todo el espacio restante */
@@ -31,17 +31,18 @@ body {
 /* Estilos para la navegación */
 .navbar ul {
     list-style-type: none;  /* Eliminar puntos de la lista */
-    padding: 10;             /* Eliminar padding */
+    padding: 10;            
     display: flex;          /* Usar flexbox para la navegación */
     margin: 1;              /* Eliminar margen */
 }
 
 .navbar ul li {
+    padding: 5px;
     margin-left: 20px;      /* Espacio entre elementos de la lista */
 }
 .navbar ul li img{
-    max-width: 12px;
-    max-height: 12px;
+    max-width: 25px;
+    max-height: 25px;
 }
 .navbar ul li a {
     color: #fff;            /* Color de los enlaces */

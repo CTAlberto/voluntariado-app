@@ -9,7 +9,7 @@
             <li><a href="home.php">Inicio</a></li>
             <li><a href="services.php">Servicios</a></li>
             <li><a href="contact.php">Contacto</a></li>
-            <li><a href="profile.php"><img src="../../public/assets/img/icon_profile.webp"></a></li>
+            <li><a href="profile.php"><img src="../../public/assets/img/user_1.png"></a></li>
         </ul>
     </nav>
 </header>
