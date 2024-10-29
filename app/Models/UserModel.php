@@ -78,24 +78,25 @@ class UserModel extends Model
     }
 
     public function getUserByEmail($email){
-        $sql = "SELECT * FROM usuarios WHERE email = :email";
+        $sql = "SELECT * FROM users WHERE email = :email";
         $query = $this->db->prepare($sql);
         $query->bindParam(':email', $email, PDO::PARAM_STR);
         $query->execute();
         if($query->rowCount() > 0){
             $user = new UserModel();
             $reg = $query->fetch();
-            $user->setId($reg['idusuario']);
-            $user->setName($reg['usuario']);
+            $user->setId($reg['user_id']);
+            $user->setName($reg['name']);
             $user->setEmail($reg['email']);
-            $user->setPassword($reg['clave']);
+            $user->setPassword($reg['password']);
+            $user->setRole($reg['role']);
+            $user->setCreatedAt($reg['created_at']);
+            
             
             return $user;
         }else{
             return false;
         }
-
-
     }
 
 }

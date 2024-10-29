@@ -19,14 +19,22 @@ class AuthController
             $email = $_POST['email'];
             $password = $_POST['password'];
             $user = $this->model->getUserByEmail($email);
-            if($user != null){
+            
+            if($user !== null){
+                
                 if(password_verify($password, $user->getPassword())){
-                    $_SESSION['user'] = $user;   
-                    var_dump($_SESSION['user']);
-                    //header('Location: /voluntariado-app/app/views/dashboard.php');
+                    session_start();
+                    $_SESSION['user'] = [
+                        'id' => $user->getId(),
+                        'name' => $user->getName(),
+                        'role' => $user->getRole(),
+                        'email' => $user->getEmail(),
+                        'created_at' => $user->getCreatedAt()
+                    ];
+                    header('Location: /voluntariado-app/app/views/dashboard.php');
                 }else{
                     echo 'Contraseña incorrecta';
-                }
+                } 
             }else{
                 echo 'Usuario no encontrado';
             }
@@ -34,4 +42,4 @@ class AuthController
     }
 
     
-}   
+}
