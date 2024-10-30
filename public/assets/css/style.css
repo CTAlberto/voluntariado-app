@@ -1,61 +1,57 @@
 /* Estilos generales */
 body {
-    margin: 0;
-    padding: 0;
+    margin: 0; /* Eliminar el margen por defecto */
+    padding: 0; /* Eliminar el padding por defecto */
 }
 
 /* Estilos para el header */
 .header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;  /* Asegura el ancho completo */
-    overflow-x: hidden;
-    position: relative;
-    z-index: 1000;
+    background-color: #333; /* Color de fondo */
+    color: #fff;            /* Color del texto */
+    padding: 10px;    /* Espaciado superior e inferior y lateral */
+    display: flex;          /* Usar flexbox para disposición */
+    justify-content: space-between; /* Espacio entre el logo y la navegación */
+    align-items: center;    /* Centrar verticalmente los elementos */
+    max-width: 100%;            /* Ocupa todo el ancho de la pantalla */
+    overflow-x: hidden;     /* Ocultar barras de desplazamiento horizontal */
+    position: relative;     /* Posicionamiento relativo */
+    z-index: 1000;         /* Asegura que el header esté por encima de otros elementos */
 }
-
-/* Estilo del logo */
-.logo {
-    flex: 1;
+.header .navbar ul{
+    width: 20%;
+    height: auto;
 }
-
-.logo img {
-    height: 50px;          /* Altura fija */
-    width: auto;           /* Ancho automático para mantener proporción */
-    max-width: 100%;       /* Asegura que no supere el tamaño contenedor */
-    border-radius: 50%;    /* Forma redondeada */
-}
-
-/* Estilos para la navegación */
-.navbar {
+.logo{
     flex: 3;
 }
-
+/* Estilo del logo */
+.logo img {
+    height: 50px; /* Altura del logo */
+    border-radius: 50%; /* Forma redondeada */  
+}
+.navbar{
+    flex: 1;               /* El menú ocupa todo el espacio restante */
+}
+/* Estilos para la navegación */
 .navbar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
+    list-style-type: none;  /* Eliminar puntos de la lista */
+    padding: 10;
+    display: flex;          /* Usar flexbox para la navegación */
+    margin: 1;              /* Eliminar margen */
 }
 
 .navbar ul li {
     padding: 5px;
-    margin-left: 20px;
+    margin-left: 20px;      /* Espacio entre elementos de la lista */
 }
-
 .navbar ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
+    color: #fff;            /* Color de los enlaces */
+    text-decoration: none;  /* Sin subrayado */
+    font-weight: bold;      /* Negrita para los enlaces */
 }
 
 .navbar ul li a:hover {
-    text-decoration: underline;
+    text-decoration: underline; /* Subrayado al pasar el mouse */
 }
 
 /* Estilos para el footer */
