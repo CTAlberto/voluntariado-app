@@ -12,8 +12,6 @@ class Model
         if(!$this->db) {
             die('Error al conectar con la base de datos');
         }else {
-            //En un futuro se puede cambiar por un log
-            echo 'Conexión exitosa';
         }
     }
 

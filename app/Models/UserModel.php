@@ -78,7 +78,7 @@ class UserModel extends Model
     }
 
     public function getUserByEmail($email){
-        $sql = "SELECT * FROM users WHERE email = :email OR name = :name" ;
+        $sql = "SELECT * FROM users WHERE (email = :email OR name = :name)" ;
         $query = $this->db->prepare($sql);
         $query->bindParam(':name', $email, PDO::PARAM_STR);
         $query->bindParam(':email', $email, PDO::PARAM_STR);

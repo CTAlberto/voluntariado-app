@@ -35,24 +35,50 @@ function getAll()
 <body>
     <?php include 'header.php'; ?>
     <div id="mainVolunteeres">
-        <h1>Voluntariados</h1>
+        <div id="imageCarrousel">
+
+        </div>
+        <aside id="asideVolunteers">
+            <h2>Voluntarios</h2>
+            <p>¿Quieres ser voluntario?</p>
+            <a href="volunteers.php" class="btn btn-primary">Ver más</a>
+        </aside>
     </div>
     <div>
+
         <?php
-            
-            foreach (getAll() as $opportunity) {
-                echo '<div class="card" style="width: 18rem;">
-                <img src="../../public/assets/img/'.$opportunity->image_url.'" class="card-img-top" alt="...">
+
+        /*foreach (getAll() as $opportunity) {
+            echo '<div class="card" style="width: 18rem;">
+                <img src="../../public/assets/img/' . $opportunity->image_url . '" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">' . $opportunity->title . '</h5>
                     <p class="card-text">' . $opportunity->description . '</p>
                     <a href="#" class="btn btn-primary">Ver más</a>
                 </div>
                 </div>';
-            }
-            
-            
+        }*/
+        foreach (getAll() as $opportunity) {
+            $json = json_encode($opportunity,  JSON_PRETTY_PRINT);
+
+            $jsonArray[] = $json;
+        }
+        // Decodificar cada JSON a un array de PHP
+        $jsonMap = array_map('json_decode', $jsonArray);
+
+        // Codificar el array a JSON para JavaScript
+        $jsonForJs = json_encode($jsonMap);
+        
         ?>
+
+<script>
+    var opportunities = <?php echo $jsonForJs; ?>;
+    let imgDiv =document.getElementById('imageCarrousel');
+    // Acceder a las propiedades y hacer algo con ellas
+    opportunities.forEach(function(opportunity) {
+        imgDiv.innerHTML += '<img width="75%" height="75%" src="../../public/assets/img/' + opportunity.image_url + '" alt="' + opportunity.title + '">';
+    });
+</script>
     </div>
     <?php include 'footer.php'; ?>
 </body>
