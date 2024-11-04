@@ -78,9 +78,8 @@ class UserModel extends Model
     }
 
     public function getUserByEmail($email){
-        $sql = "SELECT * FROM users WHERE (email = :email OR name = :name)" ;
+        $sql = "SELECT * FROM users WHERE (email = :email)" ;
         $query = $this->db->prepare($sql);
-        $query->bindParam(':name', $email, PDO::PARAM_STR);
         $query->bindParam(':email', $email, PDO::PARAM_STR);
         $query->execute();
         if($query->rowCount() > 0){
@@ -90,7 +89,7 @@ class UserModel extends Model
             $user->setName($reg['name']);
             $user->setEmail($reg['email']);
             $user->setPassword($reg['password']);
-            $user->setRole($reg['role']);
+            $user->setRole($reg['role_id']);
             $user->setCreatedAt($reg['created_at']);
             
             
@@ -99,5 +98,35 @@ class UserModel extends Model
             return false;
         }
     }
+
+    public function exist($word){
+        $sql = "SELECT * FROM users WHERE (email = :word OR name = :word)";
+        $query = $this->db->prepare($sql);
+        $query->bindParam(':word', $word, PDO::PARAM_STR);
+        $query->execute();
+        if($query->rowCount() > 0){
+            // Devuelve true si existe
+            return true;
+        }else{
+            // Devuelve false si no existe
+            return false;
+        }
+    }
+
+        public function save(){
+            $hashedPassword = password_hash($this->password, PASSWORD_BCRYPT);
+            $sql = "INSERT INTO users (name, email, password, role_id) VALUES (:name, :email, :password, :role)";
+            $query = $this->db->prepare($sql);
+            $query->bindParam(':name', $this->name, PDO::PARAM_STR);
+            $query->bindParam(':email', $this->email, PDO::PARAM_STR);
+            $query->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
+            $query->bindParam(':role', $this->role, PDO::PARAM_STR);
+            $query->execute();
+            if($query->rowCount() > 0){
+                return true;
+            }else{
+                return false;
+            }
+        }
 
 }

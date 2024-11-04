@@ -34,9 +34,9 @@ function getAll()
 
 <body>
     <?php include 'header.php'; ?>
-    <div id="mainVolunteeres">
-        <div id="imageCarrousel">
-
+    <div class="container">
+        <div id="mainVolunteeres">
+            <div id="imageCarrousel"></div>
         </div>
         <aside id="asideVolunteers">
             <h2>Voluntarios</h2>
@@ -44,20 +44,9 @@ function getAll()
             <a href="volunteers.php" class="btn btn-primary">Ver más</a>
         </aside>
     </div>
-    <div>
-
         <?php
 
-        /*foreach (getAll() as $opportunity) {
-            echo '<div class="card" style="width: 18rem;">
-                <img src="../../public/assets/img/' . $opportunity->image_url . '" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">' . $opportunity->title . '</h5>
-                    <p class="card-text">' . $opportunity->description . '</p>
-                    <a href="#" class="btn btn-primary">Ver más</a>
-                </div>
-                </div>';
-        }*/
+        
         foreach (getAll() as $opportunity) {
             $json = json_encode($opportunity,  JSON_PRETTY_PRINT);
 
@@ -74,12 +63,14 @@ function getAll()
 <script>
     var opportunities = <?php echo $jsonForJs; ?>;
     let imgDiv =document.getElementById('imageCarrousel');
+    let volName = document.getElementById('h2name');
     // Acceder a las propiedades y hacer algo con ellas
     opportunities.forEach(function(opportunity) {
-        imgDiv.innerHTML += '<img width="75%" height="75%" src="../../public/assets/img/' + opportunity.image_url + '" alt="' + opportunity.title + '">';
+        imgDiv.innerHTML += '<h2>'+opportunity.title+'</h2><img style="border-radius: 3%; margin-bottom: 10px;"  width="75%" height="75%" src="../../public/assets/img/' + opportunity.image_url + '" alt="' + opportunity.title + '"><p>'+opportunity.description+'</p><p>'+opportunity.requirements+'</p>';
+
     });
 </script>
-    </div>
+    
     <?php include 'footer.php'; ?>
 </body>
 

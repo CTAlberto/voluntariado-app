@@ -17,7 +17,7 @@ class AuthController
     {
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $email = $_POST['email'];
-            $password = $_POST['password'];
+            $password = $_POST['userPass'];
             $user = $this->model->getUserByEmail($email);
             
             if($user !== null){
@@ -34,7 +34,7 @@ class AuthController
                     header('Location: /voluntariado-app/app/views/dashboard.php');
                 }else{
                     echo 'Contraseña incorrecta';
-                } 
+                }
             }else{
                 echo 'Usuario no encontrado';
             }

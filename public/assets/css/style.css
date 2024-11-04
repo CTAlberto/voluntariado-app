@@ -1,7 +1,6 @@
 /* Estilos generales */
-body {
-    margin: 0; /* Eliminar el margen por defecto */
-    padding: 0; /* Eliminar el padding por defecto */
+body{
+    background-color: #BCD8C1 !important; /* Color de fondo */
 }
 
 /* Estilos para el header */
@@ -27,7 +26,7 @@ body {
 /* Estilo del logo */
 .logo img {
     height: 50px; /* Altura del logo */
-    border-radius: 50%; /* Forma redondeada */  
+    border-radius: 50%; /* Forma redondeada */
 }
 .navbar{
     flex: 1;               /* El menú ocupa todo el espacio restante */
@@ -58,19 +57,24 @@ body {
     height: 30px !important;
     object-fit: cover;
 }
+.container{
+    margin-top: 5%;
+    display: flex; /* Usar flexbox para alinear los elementos */
+    justify-content: space-between; /* Espacio entre los elementos */
+    margin-bottom: 5%;
+}
 /* Estilos para el contenido */
 .mainVolunteeres{
-    display: flex;
-    align-items: inline;
+    flex: 1; /* Ocupa el espacio disponible */
 }
-.imageCarrousel{
-    flex:1;
-    object-fit: cover;
-}
-.asideVolunteers{
 
-    padding: 10px;
+.asideVolunteers{
+    width: 250px; /* Ajusta el ancho según sea necesario */
+    background-color: #f0f0f0; /* Color de fondo opcional para visibilidad */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 5px; /* Esquinas redondeadas opcionales */
 }
+
 /* Estilos para el footer */
 .footer {
     background-color: #333; /* Color de fondo */
